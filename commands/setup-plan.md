@@ -49,7 +49,7 @@ One section at a time. Confirm before moving on.
 
 ### Section 5 — Companion plugin integrations
 - Is `claude-cortex` installed? (Y/N — drives whether memory is read)
-- Is `brightway-core` installed? (Y/N — drives whether `pipeline-analyst` is delegated to)
+- Is `core-ops` installed? (Y/N — drives whether `pipeline-analyst` is delegated to)
 - Is `weekly-outreach` installed? (Y/N — drives whether outreach contacts are pulled from the weekly queue)
 
 ### Section 6 — Optional preferences
@@ -101,7 +101,7 @@ _Last updated: [date]_
 
 ## Companion plugins
 - **claude-cortex:** [installed / not installed]
-- **brightway-core (pipeline-analyst):** [installed / not installed]
+- **core-ops (pipeline-analyst):** [installed / not installed]
 - **weekly-outreach:** [installed / not installed]
 
 ## Preferences

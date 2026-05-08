@@ -36,7 +36,7 @@ _Last updated: [filled by setup]_
 
 ## Companion plugins
 - **claude-cortex:** [installed / not installed]
-- **brightway-core (pipeline-analyst):** [installed / not installed]
+- **core-ops (pipeline-analyst):** [installed / not installed]
 - **weekly-outreach:** [installed / not installed]
 
 ## Preferences

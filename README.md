@@ -35,7 +35,7 @@ Run `/setup-plan`. The interview captures:
 - **CRM** — which CRM, your owner ID (HubSpot / Salesforce / Pipedrive / etc.)
 - **Working hours** — start, end, time zone
 - **Calendar conventions** — color for task blocks, emoji conventions, max blocks per day
-- **Integrations** — whether you use weekly-outreach (for outreach blocks), claude-cortex (for memory), brightway-core (for pipeline-analyst)
+- **Integrations** — whether you use weekly-outreach (for outreach blocks), claude-cortex (for memory), core-ops (for pipeline-analyst)
 
 Saved to `references/user-context.md` (gitignored).
 
@@ -44,7 +44,7 @@ Saved to `references/user-context.md` (gitignored).
 `plan-tomorrow` is more useful when paired with:
 
 - **claude-cortex** — for working memory access (`/recall`, `/remember`)
-- **brightway-core** — provides the `pipeline-analyst` subagent for cleaner CRM scoring
+- **core-ops** — provides the `pipeline-analyst` subagent for cleaner CRM scoring
 - **weekly-outreach** — provides a weekly outreach queue that plan-tomorrow can pull contacts from
 
 It works without them, but you'll get a thinner plan.
@@ -53,7 +53,7 @@ It works without them, but you'll get a thinner plan.
 
 ```
 .claude-plugin/plugin.json
-agents/                     (none — delegates to pipeline-analyst in brightway-core)
+agents/                     (none — delegates to pipeline-analyst in core-ops)
 commands/
   plan-tomorrow.md          Slash command
   setup-plan.md             Interview

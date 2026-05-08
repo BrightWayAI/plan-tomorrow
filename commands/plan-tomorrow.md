@@ -19,7 +19,7 @@ Extract:
 - CRM (tool name, owner ID)
 - Working hours (start, end, time zone)
 - Calendar conventions (color for task blocks, emoji map, max blocks per day)
-- Companion plugins (cortex installed? brightway-core for pipeline-analyst? weekly-outreach?)
+- Companion plugins (cortex installed? core-ops for pipeline-analyst? weekly-outreach?)
 
 ---
 
@@ -51,8 +51,8 @@ Query your calendar for the target day, working-hours window. Capture:
 - Free slots available for task blocks
 
 ### 2B — Pull project tasks from CRM
-**If `pipeline-analyst` is available** (brightway-core installed): use the Task tool with `subagent_type="pipeline-analyst"` and pass:
-- `user-context-path` — path to brightway-core's user-context (or this plugin's, if it has CRM details)
+**If `pipeline-analyst` is available** (core-ops installed): use the Task tool with `subagent_type="pipeline-analyst"` and pass:
+- `user-context-path` — path to core-ops's user-context (or this plugin's, if it has CRM details)
 - `time-window` — 14 days
 - `focus-filter` — `"deals or contacts with action due today or tomorrow"`
 - `top-n` — 5
