@@ -4,6 +4,14 @@ All notable changes to plan-tomorrow are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/). Versions match `plugin.json`.
 
+## [0.2.0] — Config-root refactor
+
+### Changed
+- **Plugin config moved to a user-chosen folder.** Reads/writes now go to `<config-root>/plugins/plan-tomorrow.user-context.md` via the pointer at `~/.claude-plugin-config-root`.
+- **`/setup-plan` Step 0 bootstraps the config root** and reads shared identity.
+- **`/plan-tomorrow` command updated** to read from the new path.
+- **User-facing prompts debranded** for fork-friendliness.
+
 ## [0.1.0] — Initial release
 
 ### Added

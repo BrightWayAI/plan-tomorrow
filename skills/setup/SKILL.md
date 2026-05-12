@@ -14,4 +14,4 @@ See `commands/setup-plan.md` for the full interview.
 
 ## Quick path
 
-If the user wants minimum-viable defaults to start: write a placeholder `references/user-context.md` with working hours 9–5, CRM "none," no companion plugins. The planner will work but will be limited to calendar + Gmail + manual user input. Recommend running the full interview when ready.
+If the user wants minimum-viable defaults to start: write a placeholder `<config-root>/plugins/plan-tomorrow.user-context.md` with working hours 9–5, CRM "none," no companion plugins. The planner will work but will be limited to calendar + Gmail + manual user input. Recommend running the full interview when ready.

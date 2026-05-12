@@ -14,7 +14,7 @@ See `commands/plan-tomorrow.md` for the full workflow.
 
 ## Pre-flight check
 
-Confirm `references/user-context.md` exists. If missing, route to `/setup-plan` first — the planner needs to know your CRM, working hours, and which companion plugins you have.
+Confirm `<config-root>/plugins/plan-tomorrow.user-context.md` exists. If missing, route to `/setup-plan` first — the planner needs to know your CRM, working hours, and which companion plugins you have.
 
 ## What this skill is *not* for
 

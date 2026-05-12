@@ -1,5 +1,5 @@
 ---
-description: Configure plan-tomorrow for your CRM, working hours, calendar conventions, and companion-plugin integrations. Writes results to references/user-context.md so the planning command can adapt to your setup. Re-run anytime to update.
+description: Configure plan-tomorrow for your CRM, working hours, calendar conventions, and companion-plugin integrations. Writes results to <config-root>/plugins/plan-tomorrow.user-context.md so the planning command can adapt to your setup. Re-run anytime to update.
 ---
 
 # /setup-plan
@@ -8,21 +8,38 @@ Short interview that captures the context plan-tomorrow needs to actually be use
 
 ---
 
-## Pre-step — Read shared identity (if available)
+## Step 0 — Resolve plugin config root
 
-Before asking identity-style questions (name, company, time zone, primary CRM/calendar/email), check whether `~/Documents/Claude/identity.md` exists. This is a shared identity file populated by cortex's `/setup-identity` command — every BrightWayAI marketplace plugin reads it.
+Per-plugin config in this marketplace lives under a user-chosen folder, recorded at `~/.claude-plugin-config-root` (single-line text file in the user's home).
 
-- **If it exists and is populated:** read it. Use the values to pre-fill Section 1 (Identity) and the primary-tool questions in Section 3 (CRM, calendar). Skip those; just confirm what you read.
-- **If it doesn't exist:** offer the user:
-  > "There's a shared identity file (`/setup-identity` in cortex) that other plugins read too — capture name/company/role/tools once and every plugin uses it. Want to run `/setup-identity` first (recommended, ~2 min), or capture identity inline here only?"
-  - "Run /setup-identity first" → route there, then resume.
-  - "Inline" → proceed normally.
+### A — Try the pointer
+
+Call `request_cowork_directory(~)` if not granted, then read `~/.claude-plugin-config-root`.
+- **Exists**: read line 1 → mount via `request_cowork_directory(<config-root>)`. Skip to section C.
+- **Missing**: continue to section B.
+
+### B — First-time bootstrap
+
+Prompt: "First-time plugin setup. Where should I store your plugin config — identity, voice, and per-plugin settings? Pick a folder you control (e.g., `~/Documents/Claude/` or `~/Documents/PluginConfig/`). The folder will hold `identity.md`, `voice.md`, and a `plugins/` subdirectory."
+
+Then:
+1. Call `request_cowork_directory(<path>)`. Create `<path>/plugins/`. Write absolute path to `~/.claude-plugin-config-root`.
+2. **Migration**: if `~/Documents/Claude/identity.md` or `voice.md` exists and `<path>` is not `~/Documents/Claude/`, offer to copy.
+3. **Pre-staged content**: if `~/Documents/Claude/plugin-configs/*.user-context.md` files exist, offer to copy into `<path>/plugins/`.
+
+### C — Read shared identity
+
+Read `<config-root>/identity.md` (cortex's `/setup-identity` output).
+- **Populated** → pre-fill Section 1 (Identity) and the primary-tool questions in Section 3 (CRM, calendar). Skip those; just confirm what you read.
+- **Missing** → offer `/setup-identity` first or proceed inline.
+
+For the rest of this document, **`<config-root>`** refers to the resolved path. This plugin's config file lives at **`<config-root>/plugins/plan-tomorrow.user-context.md`**.
 
 ---
 
 ## Step 1 — Check for existing config
 
-Read `references/user-context.md` if it exists.
+Read `<config-root>/plugins/plan-tomorrow.user-context.md` if it exists.
 
 - Populated → ask: "Update sections, or start over?"
 - Missing → start fresh.
@@ -74,7 +91,7 @@ One section at a time. Confirm before moving on.
 
 ## Step 3 — Write the config
 
-Populate `references/user-context.md`:
+Populate `<config-root>/plugins/plan-tomorrow.user-context.md`:
 
 ```markdown
 # plan-tomorrow user context

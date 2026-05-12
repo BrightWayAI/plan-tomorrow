@@ -12,7 +12,7 @@ The output of this command is **calendar events with full context baked in**. Yo
 
 ## Step 0 — Preflight
 
-Read `references/user-context.md`. If missing or unpopulated, route to `/setup-plan` and stop.
+Read `<config-root>/plugins/plan-tomorrow.user-context.md`. If missing or unpopulated, route to `/setup-plan` and stop.
 
 Extract:
 - Identity (name, company, what you do)
