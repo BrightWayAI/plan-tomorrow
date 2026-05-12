@@ -18,7 +18,7 @@ The output isn't a doc. It's **calendar events**.
 
 ## Install
 
-Recommended: install via the [BrightWayAI marketplace](https://github.com/BrightWayAI/claude-plugins).
+Recommended: install via the [BrightWayAI marketplace](https://github.com/BrightWayAI/nucleus).
 
 Or directly:
 
