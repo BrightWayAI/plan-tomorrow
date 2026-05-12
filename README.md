@@ -1,70 +1,27 @@
-# plan-tomorrow
+# plan-tomorrow — DEPRECATED
 
-Calendar-first daily planning for Claude (Cowork + Claude Code).
+> **This plugin has been folded into [`daily-brief`](https://github.com/BrightWayAI/daily-brief) as of 2026-05-12 (daily-brief v0.2.0).**
 
-You open your calendar tomorrow morning and just start working — no separate plan document to read, no list to decipher. Every block on your calendar tells you what to do, why it matters, and what "done" looks like.
+The `/plan-tomorrow` command and its `/setup-plan` config interview now live inside the daily-brief plugin. Daily-brief is the single home for the daily ops loop:
 
-## What it does
+- `/brief` — today's working surface (Cowork artifact)
+- `/process-brief` — route textarea annotations to drafts, task updates, meeting talking points
+- `/plan-tomorrow` — calendar-first planning of the next business day
+- `/setup-brief`, `/setup-plan` — config
 
-- Pulls **CRM tasks** for the target day (delegates to the `pipeline-analyst` agent if installed)
-- Pulls **project context** from working memory (`claude-cortex` plugin)
-- Scans **Gmail** for unanswered threads and implied action items
-- Optionally pulls **outreach contacts** from the weekly outreach plan
-- Reads **existing calendar** to find free slots
-- Creates **time blocks with rich descriptions** — every block is self-contained context
-- Confirms with you before writing to the calendar
+## Migration
 
-The output isn't a doc. It's **calendar events**.
+**Existing users:** no migration required.
 
-## Install
+- `/plan-tomorrow` continues to read your existing `<config-root>/plugins/plan-tomorrow.user-context.md` unchanged. The file lives at the same path; only the plugin source moved.
+- After your next Cowork restart, the marketplace will pull `daily-brief v0.2.0` which provides the `/plan-tomorrow` command. Your existing plan-tomorrow plugin install can be removed (or left in place — it'll just be redundant).
 
-Recommended: install via the [BrightWayAI marketplace](https://github.com/BrightWayAI/nucleus).
+**New users:** install `daily-brief` from the [Nucleus](https://github.com/BrightWayAI/nucleus) marketplace. Do not install this plugin.
 
-Or directly:
+## Why the fold
 
-```
-/plugin marketplace add BrightWayAI/plan-tomorrow
-/plugin install plan-tomorrow@plan-tomorrow
-```
+Daily-brief and plan-tomorrow shared ~90% of their data sources (calendar, CRM, cortex memory, inbox). Two plugins for one ops loop added decision cost ("which do I run?") without adding capability. Folding them keeps both verbs but reduces the marketplace catalog.
 
-## First-time setup
+## Archive
 
-Run `/setup-plan`. The interview captures:
-
-- **Identity** — your name, company, role
-- **CRM** — which CRM, your owner ID (HubSpot / Salesforce / Pipedrive / etc.)
-- **Working hours** — start, end, time zone
-- **Calendar conventions** — color for task blocks, emoji conventions, max blocks per day
-- **Integrations** — whether you use weekly-outreach (for outreach blocks), claude-cortex (for memory), core-ops (for pipeline-analyst)
-
-Saved to `references/user-context.md` (gitignored).
-
-## Companion plugins
-
-`plan-tomorrow` is more useful when paired with:
-
-- **claude-cortex** — for working memory access (`/recall`, `/remember`)
-- **core-ops** — provides the `pipeline-analyst` subagent for cleaner CRM scoring
-- **weekly-outreach** — provides a weekly outreach queue that plan-tomorrow can pull contacts from
-
-It works without them, but you'll get a thinner plan.
-
-## What's inside
-
-```
-.claude-plugin/plugin.json
-agents/                     (none — delegates to pipeline-analyst in core-ops)
-commands/
-  plan-tomorrow.md          Slash command
-  setup-plan.md             Interview
-skills/
-  plan-tomorrow/SKILL.md    Auto-fires on planning phrases
-  setup/SKILL.md            Auto-fires on setup phrases
-references/
-  user-context.template.md  Structure (committed)
-  user-context.md           Your config (gitignored)
-```
-
-## License
-
-MIT.
+This repository is archived (read-only) on GitHub. The source code and history remain accessible. See [daily-brief](https://github.com/BrightWayAI/daily-brief) for the active home of these commands.
